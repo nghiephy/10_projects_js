@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F2F3FB;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main {
+    position: relative;
+    min-height: 640px;
+    min-width: 780px;   
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.header {
+    height: 130px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #5CCDE5;
+    padding: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.header__times, 
+.header__info {
+    margin-top: -20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header__times {
+    width: 126px;
+}
+
+.header__info-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__times,
+.header__info-item ion-icon,
+.header__info-item span {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.header__info-item span {
+    padding: 0 4px;
+}
+
+.header__correct {
+    margin-right: 30px;
+}
+
+.header__times ion-icon {
+    margin-right: 10px;
+}
+
+.quiz {
+    height: 410px;
+    width: 570px;
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    padding: 30px;
+    transform: translateX(-50%);
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.answer__label,
+.question__label {
+    font-size: 18px;
+    color: #B2C4CA;
+    margin-bottom: 14px;
+}
+
+.question__content {
+    font-size: 20px;
+    color: #96999C;
+    margin-bottom: 30px;
+}
+
+.answer__option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 6px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.answer__option:hover {
+    background-color: #e0f9ff; 
+}
+
+.answer__option span {
+    color: #6A6E6F;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-right: 12px;
+}
+
+.answer__option p {
+    color: #96999C;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.answer__option.active {
+    background: #5CCDE5; 
+    background: linear-gradient(to right, #5CCDE5, #83fcec );
+
+}
+
+.answer__option.active p,
+.answer__option.active span {
+    color: #fff;
+}
+
+
+#btn-submit {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6%;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    min-width: 140px;
+    background-color: #5CCDE5;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all .3s ease;
+}
+
+#btn-play-again:hover,
+#btn-submit:hover {
+    opacity: 0.85;
+}
+
+/* Modal section css */
+.modal {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: fadeIn ease-in 0.1s;
+    display: none;
+}
+
+#modal_checkbox:checked ~ .modal {
+    display: flex;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal__body {
+    position: relative;
+    height: 450px;
+    width: 570px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    z-index: 2;
+    animation: growth linear 0.1s;
+}
+
+.modal__body h2 {
+    color: #6A6E6F;
+}
+
+.modal-body__img {
+    margin-top: -70px;
+    margin-left: 70px;
+    margin-bottom: 30px;
+    width: 100%;
+    object-fit: cover;
+    user-select: none;
+}
+
+.modal-body__close {
+    position: absolute;
+    top: 0.5%;
+    right: 0.5%;
+    font-size: 34px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-body__score {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    color: black;
+}
+
+#btn-play-again {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20%;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    min-width: 140px;
+    background-color: #5CCDE5;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all .3s ease;
+}
+
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(0.7);
+    }
+    to {       
+        transform: scale(1);
+    }
+}

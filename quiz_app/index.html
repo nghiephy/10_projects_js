@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main">
+        <!-- Header section -->
+        <div class="header">
+            <div class="header__info">
+                <div class="header__info-item header__correct">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                    <span>0</span>
+                     correct
+                </div>
+                <div class="header__info-item header__wrong">
+                    <ion-icon name="close-outline"></ion-icon>
+                    <span>0</span>
+                     wrong
+                </div>
+            </div>
+            <div class="header__times">
+                <ion-icon name="alarm-outline"></ion-icon>
+                <span class="header__times-minutes" >24 :</span>&nbsp;
+                <span class="header__times-seconds" > 09</span>
+            </div>
+        </div>
+
+        <!-- Quiz layout section -->
+        <div class="quiz">
+            <div class="question">
+                <div class="question__label">
+                    Question <span>3</span> (<span>23</span> remaining)
+                </div>
+                <div class="question__content">
+                    What is the most popular programing languages?
+                </div>
+            </div>
+
+            <div class="answer">
+                <div class="answer__label">Answer options</div>
+                <div class="answer__content">
+                    <div class="answer__option" id="a">
+                        <span>A</span>
+                        <p>Java</p>
+                    </div>
+                    <div class="answer__option" id="b">
+                        <span>B</span>
+                        <p>C++</p>
+                    </div>
+                    <div class="answer__option" id="c">
+                        <span>C</span>
+                        <p>Python</p>
+                    </div>
+                    <div class="answer__option" id="d">
+                        <span>D</span>
+                        <p>JavaScript</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button onclick="handle_submit()" id="btn-submit">Submit</button>
+    </div>
+
+    <!-- Modal section -->
+    <input type="checkbox" hidden name="" id="modal_checkbox">
+    <div class="modal">
+        <label for="modal_checkbox" class="modal__overlay"></label>
+        <div class="modal__body">
+            <label for="modal_checkbox" onclick="location.reload()">
+                <ion-icon class="modal-body__close" name="close-outline"></ion-icon>
+            </label>
+
+            <img class="modal-body__img" src="./congratulations.png" alt="">
+            <h2>Your score:</h2>
+            <span id="modal-body__score" >9 / 10</span>
+            <button id="btn-play-again" >Play Again</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
