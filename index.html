@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <h1 class="header-title" >Top JavaScript Projects Collection</h1>
+
+    <div class="bubbles header-title">
+        <h1>Top JavaScript Projects Collection</h1>
+    </div>
     
     <div class="grid wide project-list">
         <div class="row la-gutter">
@@ -19,7 +22,7 @@
                     <div class="project-item__info">
                         <h2 class="item-info__title" >CountDown Timer</h2>
                         <p>Tags: JavaScript, HTML, CSS</p>
-                        <a href="https://nghiephy.github.io/10_projects_js/count_down_timer/index.html">
+                        <a href="./count_down_timer/index.html">
                             <button class="item-info__btn" >Demo</button>
                         </a>
                     </div>
@@ -31,7 +34,19 @@
                     <div class="project-item__info">
                         <h2 class="item-info__title" >Quiz App</h2>
                         <p>Tags: JavaScript, HTML, CSS</p>
-                        <a href="https://nghiephy.github.io/10_projects_js/quiz_app/index.html">
+                        <a href="./quiz_app/index.html">
+                            <button  class="item-info__btn" >Demo</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-3 m-6 c-12">
+                <div class="project-item">
+                    <img class="project-item__img" src="./assets/img/form_validation.JPG" alt="">
+                    <div class="project-item__info">
+                        <h2 class="item-info__title" >Form Validation</h2>
+                        <p>Tags: JavaScript, HTML, CSS</p>
+                        <a href="./form_validation/index.html">
                             <button  class="item-info__btn" >Demo</button>
                         </a>
                     </div>
@@ -40,5 +55,50 @@
             
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        jQuery(document).ready(function($){
+ 
+        // Define a blank array for the effect positions. This will be populated based on width of the title.
+        var bArray = [];
+        // Define a size array, this will be used to vary bubble sizes
+        var sArray = [4,6,8,10];
+
+        // Push the header width values to bArray
+        for (var i = 0; i < $('.bubbles').width(); i++) {
+            bArray.push(i);
+        }
+        
+        // Function to select random array element
+        // Used within the setInterval a few times
+        function randomValue(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // setInterval function used to create new bubble every 350 milliseconds
+        setInterval(function(){
+            
+            // Get a random size, defined as variable so it can be used for both width and height
+            var size = randomValue(sArray);
+            // New bubble appeneded to div with it's size and left position being set inline
+            // Left value is set through getting a random value from bArray
+            $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+            
+            // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
+            // Callback function used to remove finsihed animations from the page
+            $('.individual-bubble').animate({
+                'bottom': '100%',
+                'opacity' : '-=0.7'
+            }, 3000, function(){
+                $(this).remove()
+            }
+            );
+
+
+        }, 350);
+
+        });
+    </script>
 </body>
 </html>
