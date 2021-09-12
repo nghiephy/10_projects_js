@@ -1,0 +1,18 @@
+/* Mobile */
+@media (max-width: 800px) {
+    .main {
+        min-width: 100%;
+        /* min-height: 100%; */
+    }
+
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .quiz {
+        min-width: 100%;
+        width: 100%;
+    }
+
+}
