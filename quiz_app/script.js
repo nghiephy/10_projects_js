@@ -49,7 +49,7 @@ let correct = 0;
 let wrong = 0;
 let d = new Date();
 let times = new Date();
-times.setMinutes(d.getMinutes()+10);
+times.setMinutes(d.getMinutes()+2);
 
 const answerEleBox = document.querySelector('.answer__content');
 const answerOptionList = document.querySelectorAll('.answer__option');
@@ -57,10 +57,11 @@ const modalCheckbox = document.querySelector('#modal_checkbox');
 const btnPlayAgain = document.querySelector('#btn-play-again');
 const minutesEle = document.querySelector('.header__times-minutes');
 const secondsEle = document.querySelector('.header__times-seconds');
+const scoreBoard = document.querySelector('#modal-body__score');
 
 loadCurrentQuiz();
 handle_submit();
-setInterval(handle_timer, 1000);
+var countDown = setInterval(handle_timer, 1000);
 
 function loadCurrentQuiz() {
     const statusAnswerEle = document.querySelectorAll('.question__label span');
@@ -78,7 +79,6 @@ function loadCurrentQuiz() {
 }
 
 function handle_submit() {
-    const scoreBoard = document.querySelector('#modal-body__score');
     const correctLabel = document.querySelector('.header__correct span');
     const wrongLabel = document.querySelector('.header__wrong span');
     
@@ -97,6 +97,7 @@ function handle_submit() {
         currentQuiz++;
 
         if(currentQuiz >= totalQuiz) {
+            clearInterval(countDown);
             modalCheckbox.checked = 'checked';
             scoreBoard.innerText = `${correct} / ${totalQuiz}`;
             return;
@@ -138,6 +139,15 @@ function handle_timer() {
 
     minutesEle.innerText = `${formatTime(minutes)} : `;
     secondsEle.innerText = formatTime(seconds);
+
+    if(minutes===0 && seconds===0) {
+        clearInterval(countDown);
+        modalCheckbox.checked = 'checked';
+        console.log(correct);
+        console.log(totalQuiz);
+        scoreBoard.innerText = `${correct} / ${totalQuiz}`;
+        return;
+    }
     
 }
 
