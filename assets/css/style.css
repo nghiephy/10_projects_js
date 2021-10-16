@@ -8,18 +8,19 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
+    height: 100vh;
     background-image: url(../img/background_1.JPG);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+    overflow-x: hidden;
 }
 
 .header-title {
     width: 100%;
     display: block;
     text-align: center;
-    font-size: 40px;
-    padding-bottom: 50px;
+    font-size: 30px;
+    padding-bottom: 30px;
 }
 
 .project-item {
